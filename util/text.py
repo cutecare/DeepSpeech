@@ -24,10 +24,16 @@ class Alphabet(object):
                 self._size += 1
 
     def string_from_label(self, label):
-        return self._label_to_str[label]
+		try:
+			return self._label_to_str[label]
+		except:
+			return u' '
 
     def label_from_string(self, string):
-        return self._str_to_label[string]
+		try:
+			return self._str_to_label[string]
+		except:
+			return 0
 
     def size(self):
         return self._size

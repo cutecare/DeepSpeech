@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from __future__ import absolute_import, division, print_function
 
 import codecs
@@ -18,7 +18,7 @@ from tensorflow.python.platform import gfile
 from tensorflow.contrib.learn.python.learn.datasets import base
 
 """The number of jobs to run in parallel"""
-NUM_PARALLEL = 8
+NUM_PARALLEL = 2
 
 """Lambda function returns the filename of a path"""
 filename_of = lambda x: path.split(x)[1]
@@ -115,7 +115,7 @@ def _download_and_preprocess_data(data_dir):
 
     print("Downloading Voxforge data set into {} if not already present...".format(archive_dir))
 
-    voxforge_url = 'http://www.repository.voxforge1.org/downloads/SpeechCorpus/Trunk/Audio/Main/16kHz_16bit'
+    voxforge_url = 'http://www.repository.voxforge1.org/downloads/Russian/Trunk/Audio/Main/16kHz_16bit'
     html_page = urllib.request.urlopen(voxforge_url)
     soup = BeautifulSoup(html_page, 'html.parser')
 
@@ -153,9 +153,9 @@ def _download_and_preprocess_data(data_dir):
     train_files = _generate_dataset(data_dir, "train")
 
     # Write sets to disk as CSV files
-    train_files.to_csv(path.join(data_dir, "voxforge-train.csv"), index=False)
-    dev_files.to_csv(path.join(data_dir, "voxforge-dev.csv"), index=False)
-    test_files.to_csv(path.join(data_dir, "voxforge-test.csv"), index=False)
+    train_files.to_csv(path.join(data_dir, "voxforge-train.csv"), index=False, encoding='utf-8')
+    dev_files.to_csv(path.join(data_dir, "voxforge-dev.csv"), index=False, encoding='utf-8')
+    test_files.to_csv(path.join(data_dir, "voxforge-test.csv"), index=False, encoding='utf-8')
 
 def _generate_dataset(data_dir, data_set):
     extracted_dir = path.join(data_dir, data_set)
@@ -166,15 +166,17 @@ def _generate_dataset(data_dir, data_set):
                 for line in f:
                     id = line.split(' ')[0].split('/')[-1]
                     sentence = ' '.join(line.split(' ')[1:])
-                    sentence = re.sub("[^a-z']"," ",sentence.strip().lower())
+                    sentence = re.sub("[\!\-\+,;\._\)\(\?\:\;\#\@\']"," ",sentence.strip().lower())
                     transcript = ""
                     for token in sentence.split(" "):
                         word = token.strip()
                         if word!="" and word!=" ":
                             transcript += word + " "
-                    transcript = unicodedata.normalize("NFKD", transcript.strip())  \
-                                              .encode("ascii", "ignore")            \
-                                              .decode("ascii", "ignore")
+                    try:
+                       transcript = unicode(transcript.strip(),'utf-8')
+                    except TypeError: 
+                       transcript = transcript.strip() 
+                    transcript = unicodedata.normalize("NFKD", transcript)
                     wav_file = path.join(promts_file[:-11],"wav/" + id + ".wav")
                     if gfile.Exists(wav_file):
                         wav_filesize = path.getsize(wav_file)

@@ -1,0 +1,12 @@
+wav_filename,wav_filesize,transcript
+/home/DeepSpeech/data/cutecare/010.wav,221096,включение и выключение света при появлении
+/home/DeepSpeech/data/cutecare/020.wav,288512,погаси свет и освещение в прихожей выключи свет 
+/home/DeepSpeech/data/cutecare/030.wav,270600,в коридоре стало темно и решил включить свет
+/home/DeepSpeech/data/cutecare/031.wav,197844,в прихожей и отключил свет в комнате 
+/home/DeepSpeech/data/cutecare/032.wav,265808,и выключил свет в коридоре и отключил в прихожей свет
+/home/DeepSpeech/data/cutecare/111.wav,316752,или уходе людей из комнаты коридора прихожей
+/home/DeepSpeech/data/cutecare/120.wav,279904,погаси свет и освещение в прихожей
+/home/DeepSpeech/data/cutecare/121.wav,271240,выключи свет в комнате погасил свет 
+/home/DeepSpeech/data/cutecare/130.wav,228828,в коридоре стало темно и решил 
+/home/DeepSpeech/data/cutecare/131.wav,236668,включить свет в прихожей и отключил 
+/home/DeepSpeech/data/cutecare/132.wav,253272,свет в комнате и выключил свет в коридоре и отключил в прихожей свет
