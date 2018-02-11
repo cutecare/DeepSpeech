@@ -5,7 +5,7 @@ if [ ! -f DeepSpeech.py ]; then
     exit 1
 fi;
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/DeepSpeech/native_client
+LD_LIBRARY_PATH=/usr/local/lib:/home/DeepSpeech/native_client
 
 python -u DeepSpeech.py \
   --train_files data/cutecare/cutecare-train.csv \
