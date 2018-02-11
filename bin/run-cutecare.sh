@@ -14,10 +14,10 @@ python -u DeepSpeech.py \
   --checkpoint_dir /work/checkpoint \
   --export_dir /work/export \
   --lm_binary_path /work/lm.binary \
-  --lm_trie_path /work/trie
-  --train_batch_size 13 \
-  --dev_batch_size 13 \
-  --test_batch_size 13 \
+  --lm_trie_path /work/trie \
+  --train_batch_size 16 \
+  --dev_batch_size 8 \
+  --test_batch_size 8 \
   --epoch 60 \
   --learning_rate 0.0001 \
   --display_step 10 \
