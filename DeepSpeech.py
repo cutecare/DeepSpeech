@@ -338,11 +338,11 @@ def initialize_globals():
 # =================
 
 def prefix_print(prefix, message):
-    print(prefix + ('\n' + prefix).join(message.split('\n')))
+    print(prefix + (u'\n' + prefix).join(message.split(u'\n')))
 
 def log_debug(message):
     if FLAGS.log_level == 0:
-        prefix_print('D ', message)
+        prefix_print(u'D ', message)
 
 def log_traffic(message):
     if FLAGS.log_traffic:
@@ -350,15 +350,15 @@ def log_traffic(message):
 
 def log_info(message):
     if FLAGS.log_level <= 1:
-        prefix_print('I ', message)
+        prefix_print(u'I ', message)
 
 def log_warn(message):
     if FLAGS.log_level <= 2:
-        prefix_print('W ', message)
+        prefix_print(u'W ', message)
 
 def log_error(message):
     if FLAGS.log_level <= 3:
-        prefix_print('E ', message)
+        prefix_print(u'E ', message)
 
 
 # Graph Creation
@@ -892,7 +892,7 @@ class Sample(object):
         self.wer = sample_wer
 
     def __str__(self):
-        return 'WER: %f, loss: %f, mean edit distance: %f\n - src: "%s"\n - res: "%s"' % (self.wer, self.loss, self.mean_edit_distance, self.src, self.res)
+        return u'WER: %f, loss: %f, mean edit distance: %f\n - src: "%s"\n - res: "%s"' % (self.wer, self.loss, self.mean_edit_distance, self.src, self.res)
 
 class WorkerJob(object):
     def __init__(self, epoch_id, index, set_name, steps, report):
@@ -1066,11 +1066,11 @@ class Epoch(object):
         if not self.report:
             return '%s - loss: %f' % (self.name(), self.loss)
 
-        s = '%s - WER: %f, loss: %s, mean edit distance: %f' % (self.name(), self.wer, self.loss, self.mean_edit_distance)
+        s = u'%s - WER: %f, loss: %s, mean edit distance: %f' % (self.name(), self.wer, self.loss, self.mean_edit_distance)
         if len(self.samples) > 0:
             line = '\n' + ('-' * 80)
             for sample in self.samples:
-                s += '%s\n%s' % (line, sample)
+                s += u'%s\n%s' % (line, sample)
             s += line
         return s
 
@@ -1433,7 +1433,7 @@ class TrainingCoordinator(object):
                         # If it declares itself done, move it from 'running' to 'done' collection
                         self._epochs_running.remove(epoch)
                         self._epochs_done.append(epoch)
-                        log_info('%s' % epoch)
+                        log_info(u'%s' % epoch)
             else:
                 # There was no running epoch found for this job - this should never happen.
                 log_error('There is no running epoch of ID %d for job with ID %d. This should never happen.' % (job.epoch_id, job.id))
