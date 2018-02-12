@@ -6,6 +6,7 @@ if [ ! -f DeepSpeech.py ]; then
 fi;
 
 LD_LIBRARY_PATH=/usr/local/lib:/home/DeepSpeech/native_client
+PYTHONIOENCODING=UTF-8
 
 python -u DeepSpeech.py \
   --train_files data/cutecare/cutecare-train.csv \
