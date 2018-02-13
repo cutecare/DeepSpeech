@@ -24,4 +24,4 @@ python -u DeepSpeech.py \
   --default_stddev 0.046875 \
   --checkpoint_step 1 \
   --wer_log_pattern "GLOBAL LOG: logwer('${COMPUTE_ID}', '%s', '%s', %f)"\
-  "$@" >/work/deepspeech.log
+  "$@" >>/work/deepspeech.log
