@@ -22,7 +22,7 @@ python -u DeepSpeech.py \
   --validation_step 1 \
   --dropout_rate 0.15 \
   --default_stddev 0.046875 \
-  --n_hidden 8192 \
+  --n_hidden 4096 \
   --checkpoint_step 1 \
   --early_stop false \
   --wer_log_pattern "GLOBAL LOG: logwer('${COMPUTE_ID}', '%s', '%s', %f)"\
