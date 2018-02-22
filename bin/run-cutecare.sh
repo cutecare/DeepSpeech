@@ -14,15 +14,15 @@ python -u DeepSpeech.py \
   --lm_binary_path /work/lm.binary \
   --lm_trie_path /work/trie \
   --train_batch_size 32 \
-  --dev_batch_size 16 \
-  --test_batch_size 16 \
+  --dev_batch_size 8 \
+  --test_batch_size 8 \
   --epoch 400 \
   --learning_rate 0.01 \
   --display_step 10 \
   --validation_step 1 \
   --dropout_rate 0.15 \
   --default_stddev 0.046875 \
-  --n_hidden 4096 \
+  --n_hidden 3196 \
   --checkpoint_step 1 \
   --early_stop false \
   --wer_log_pattern "GLOBAL LOG: logwer('${COMPUTE_ID}', '%s', '%s', %f)"\
